@@ -4,11 +4,16 @@ const CotizadorContext = createContext()
 
 const CotizadorProvider = ({children}) => {
 const [modal, setModal] = useState(false)
-    return (
+    
+const cambiarState = () => {
+    setModal(!modal)
+}
+
+return (
         <CotizadorContext.Provider
         value={{
             modal,
-            setModal
+            cambiarState
         }}>
             {children}
         </CotizadorContext.Provider>
