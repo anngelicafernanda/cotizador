@@ -1,6 +1,11 @@
 import Formulario from "./Formulario";
+import useCotizador from "../hooks/useCotizador";
 
 const AppSeguro = () => {
+  const {modal} = useCotizador()
+
+  console.log(modal)
+
   return (
     <>
       <header className="my-10">
