@@ -2,16 +2,10 @@ import { Fragment } from "react";
 import { MARCAS, YEARS, PLANES } from "../constants/Index";
 import useCotizador from "../hooks/useCotizador";
 
-
 const Formulario = () => {
-
-  const {modal, cambiarState} = useCotizador()
-console.log(modal)
-
-
+  const { datos, handleChangeDatos } = useCotizador();
   return (
     <>
-    <button onClick={cambiarState}>Cambiar Modal de Context</button>
       <form>
         <div className="my-5">
           <label className="block mb-3 font-bold text-gray-400 uppercase">
@@ -20,6 +14,8 @@ console.log(modal)
           <select
             name="marca"
             className="w-full p-3 bg-white border border-gray-200"
+            onChange={(e) => handleChangeDatos(e)}
+          value={datos.marca}
           >
             <option value="">-- Selecciona Marca --</option>
             {MARCAS.map((marca) => (
@@ -35,8 +31,10 @@ console.log(modal)
             AÑO
           </label>
           <select
-            name="marca"
+            name="year"
             className="w-full p-3 bg-white border border-gray-200"
+            onChange={(e) => handleChangeDatos(e)}
+            value={datos.year}
           >
             <option value="">-- Selecciona Año --</option>
             {YEARS.map((year) => (
@@ -54,14 +52,22 @@ console.log(modal)
           <div className="flex gap-3 items-center">
             {PLANES.map((plan) => (
               <Fragment key={plan.id}>
-                   <label>{plan.nombre} </label> 
-                    <input type="radio" name="plan" value={plan.id} />
+                <label>{plan.nombre} </label>
+                <input
+                  onChange={(e) => handleChangeDatos(e)}
+                  type="radio"
+                  name="plan"
+                  value={plan.id}
+                />
               </Fragment>
             ))}
           </div>
         </div>
-        <input type="submit" className="w-full bg-indigo-500 hover:bg-indigo-600 transition-colors text-white cursor-pointer p-3 uppercase font-bold"
-        value="Cotizar" />
+        <input
+          type="submit"
+          className="w-full bg-indigo-500 hover:bg-indigo-600 transition-colors text-white cursor-pointer p-3 uppercase font-bold"
+          value="Cotizar"
+        />
       </form>
     </>
   );
