@@ -3,8 +3,9 @@ import { MARCAS, YEARS, PLANES } from "../constants/Index";
 import useCotizador from "../hooks/useCotizador";
 import Error from "./Error";
 
+
 const Formulario = () => {
-  const { datos, handleChangeDatos, error,setError } = useCotizador();
+  const { datos, handleChangeDatos, error,setError, cotizadorSeguro } = useCotizador();
   
   const handleSubmit = e => {
     e.preventDefault()
@@ -13,7 +14,9 @@ const Formulario = () => {
     return
     }
     setError("")
-    //TODO: COTIZAR 
+    cotizadorSeguro()
+
+
   }
 
   return (
