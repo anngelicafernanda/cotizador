@@ -8,11 +8,11 @@ const Resultado = () => {
 
   const yearRef = useRef(year)
 
-  const [nombreMarca] = useCallback(
+  const [nombreMarca] = useMemo(()=>
     MARCAS.filter((m) => m.id === Number(marca)),
     [resultado]
   );
-  const [nombrePlan] = useCallback(
+  const [nombrePlan] = useMemo(()=>
     PLANES.filter((p) => p.id === Number(plan)),
     [resultado]
   );
